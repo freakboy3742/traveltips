@@ -81,7 +81,6 @@ class TravelTips(toga.App):
 
     def startup(self):
         self.main_window = toga.MainWindow(self.name, size=(320, 568))
-        self.main_window.app = self
 
         box = toga.Box(style=Pack(direction=COLUMN, padding=5))
 
@@ -114,6 +113,7 @@ class TravelTips(toga.App):
 
         self.amount = toga.NumberInput(
             on_change=self.on_change,
+            min_value=0,
             style=Pack(
                 font_family='Helvetica',
                 font_size=48,
@@ -146,19 +146,19 @@ class TravelTips(toga.App):
 
         tip_box = toga.Box(style=Pack())
 
-        self.tip_10 = toga.NumberInput(
+        self.tip_10 = toga.TextInput(
             readonly=True,
             style=Pack(flex=1, text_align=RIGHT)
         )
         tip_box.add(self.tip_10)
 
-        self.tip_15 = toga.NumberInput(
+        self.tip_15 = toga.TextInput(
             readonly=True,
             style=Pack(flex=1, padding_left=5, text_align=RIGHT)
         )
         tip_box.add(self.tip_15)
 
-        self.tip_20 = toga.NumberInput(
+        self.tip_20 = toga.TextInput(
             readonly=True,
             style=Pack(flex=1, padding_left=5, text_align=RIGHT)
         )
@@ -193,7 +193,7 @@ class TravelTips(toga.App):
 
         box.add(my_box)
 
-        self.my_amount = toga.NumberInput(
+        self.my_amount = toga.TextInput(
             readonly=True,
             style=Pack(
                 font_family='Helvetica',
@@ -225,17 +225,17 @@ class TravelTips(toga.App):
         box.add(my_tip_label_box)
 
         my_tip_box = toga.Box(style=Pack())
-        self.my_tip_10 = toga.NumberInput(
+        self.my_tip_10 = toga.TextInput(
             readonly=True,
             style=Pack(flex=1, text_align=RIGHT)
         )
         my_tip_box.add(self.my_tip_10)
-        self.my_tip_15 = toga.NumberInput(
+        self.my_tip_15 = toga.TextInput(
             readonly=True,
             style=Pack(flex=1, padding_left=5, text_align=RIGHT)
         )
         my_tip_box.add(self.my_tip_15)
-        self.my_tip_20 = toga.NumberInput(
+        self.my_tip_20 = toga.TextInput(
             readonly=True,
             style=Pack(flex=1, padding_left=5, text_align=RIGHT)
         )
