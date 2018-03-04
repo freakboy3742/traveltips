@@ -12,11 +12,15 @@ class Currency:
         self.format = format
 
     def __str__(self):
-        return '{} ({})'.format(self.name, self.symbol)
+        if self.symbol:
+            return '{} ({})'.format(self.name, self.symbol)
+        else:
+            return self.name
 
 
 CURRENCIES = [
     Currency('AU Dollars', symbol='$', forex=1.26),
+    Currency('AE Dirham', symbol=None, forex=3.67),
     Currency('BR Real', symbol='R$', forex=3.21, format='%.0f'),
     Currency('CA Dollars', symbol='$', forex=1.25),
     Currency('CH Franc', symbol='Fr.', forex=0.97),
@@ -29,6 +33,7 @@ CURRENCIES = [
     Currency('MX Peso', symbol='$', forex=19.04, format='%.0f'),
     Currency('MY Ringgit', symbol='RM', forex=3.97, format='%.0f'),
     Currency('NZ Dollars', symbol='$', forex=1.38),
+    Currency('SG Dollars', symbol='$', forex=1.32),
     Currency('TH Baht', symbol='฿', forex=31.88, format='%.0f'),
     Currency('US Dollars', symbol='$', forex=1.0),
 ]
@@ -57,7 +62,7 @@ class TravelTips(toga.App):
             self.my_tip_15.value = my.format % (my_amount * 0.15)
             self.my_tip_20.value = my.format % (my_amount * 0.2)
 
-        except ValueError:
+        except (ValueError, TypeError) as e:
             if self.amount.value:
                 value = '?'
             else:
@@ -114,6 +119,7 @@ class TravelTips(toga.App):
         self.amount = toga.NumberInput(
             on_change=self.on_change,
             min_value=0,
+            step='0.01',
             style=Pack(
                 font_family='Helvetica',
                 font_size=48,
