@@ -47,20 +47,20 @@ FOREX = {
 class TravelTips(toga.App):
     def calculate(self):
         try:
-            value = float(self.amount.value)
+            self.my_tip_label.text = self.tip_rate.value
 
+            value = float(self.amount.value)
+            rate = int(self.tip_rate.value[:-1]) / 100.0
             local = FOREX[self.local_currency.value]
             my = FOREX[self.my_currency.value]
-            self.tip_10.value = local.format % (value * 0.1)
-            self.tip_15.value = local.format % (value * 0.15)
-            self.tip_20.value = local.format % (value * 0.2)
+            self.tip.value = local.format % (value * rate)
+            self.tip_total.value = local.format % (value * (rate + 1.0))
 
             my_amount = value / local.forex * my.forex
             self.my_amount.value = my.format % my_amount
 
-            self.my_tip_10.value = my.format % (my_amount * 0.1)
-            self.my_tip_15.value = my.format % (my_amount * 0.15)
-            self.my_tip_20.value = my.format % (my_amount * 0.2)
+            self.my_tip.value = my.format % (my_amount * rate)
+            self.my_tip_total.value = my.format % (my_amount * (rate + 1.0))
 
         except (ValueError, TypeError) as e:
             if self.amount.value:
@@ -68,15 +68,13 @@ class TravelTips(toga.App):
             else:
                 value = ''
 
-            self.tip_10.value = value
-            self.tip_15.value = value
-            self.tip_20.value = value
+            self.tip.value = value
+            self.tip_total.value = value
 
             self.my_amount.value = value
 
-            self.my_tip_10.value = value
-            self.my_tip_15.value = value
-            self.my_tip_20.value = value
+            self.my_tip.value = value
+            self.my_tip_total.value = value
 
     def on_select(self, widget):
         self.calculate()
@@ -128,47 +126,26 @@ class TravelTips(toga.App):
         )
         box.add(self.amount)
 
-        tip_label_box = toga.Box(style=Pack(padding_top=10))
-        self.tip_label_10 = toga.Label(
-            '10%',
-            style=Pack(flex=1, text_align=RIGHT)
-        )
+        tip_box = toga.Box(style=Pack(padding_top=10))
 
-        tip_label_box.add(self.tip_label_10)
-        self.tip_label_15 = toga.Label(
-            '15%',
+        self.tip_rate = toga.Selection(
+            items=["20%", "15%", "10%"],
+            on_select=self.on_select,
+            style=Pack(flex=1)
+        )
+        tip_box.add(self.tip_rate)
+
+        self.tip = toga.TextInput(
+            readonly=True,
             style=Pack(flex=1, padding_left=5, text_align=RIGHT)
         )
+        tip_box.add(self.tip)
 
-        tip_label_box.add(self.tip_label_15)
-        self.tip_label_20 = toga.Label(
-            '20%',
-            style=Pack(flex=1, padding_left=5, text_align=RIGHT)
-        )
-
-        tip_label_box.add(self.tip_label_20)
-
-        box.add(tip_label_box)
-
-        tip_box = toga.Box(style=Pack())
-
-        self.tip_10 = toga.TextInput(
+        self.tip_total = toga.TextInput(
             readonly=True,
             style=Pack(flex=1, text_align=RIGHT)
         )
-        tip_box.add(self.tip_10)
-
-        self.tip_15 = toga.TextInput(
-            readonly=True,
-            style=Pack(flex=1, padding_left=5, text_align=RIGHT)
-        )
-        tip_box.add(self.tip_15)
-
-        self.tip_20 = toga.TextInput(
-            readonly=True,
-            style=Pack(flex=1, padding_left=5, text_align=RIGHT)
-        )
-        tip_box.add(self.tip_20)
+        tip_box.add(self.tip_total)
 
         box.add(tip_box)
 
@@ -209,43 +186,25 @@ class TravelTips(toga.App):
         )
         box.add(self.my_amount)
 
-        my_tip_label_box = toga.Box(style=Pack(padding_top=10))
-        self.my_tip_label_10 = toga.Label(
-            '10%',
-            style=Pack(flex=1, text_align=RIGHT)
-        )
-        my_tip_label_box.add(self.my_tip_label_10)
+        my_tip_box = toga.Box(style=Pack(padding_top=10))
 
-        self.my_tip_label_15 = toga.Label(
-            '15%',
-            style=Pack(flex=1, padding_left=5, text_align=RIGHT)
-        )
-        my_tip_label_box.add(self.my_tip_label_15)
-
-        self.my_tip_label_20 = toga.Label(
+        self.my_tip_label = toga.Label(
             '20%',
             style=Pack(flex=1, padding_left=5, text_align=RIGHT)
         )
-        my_tip_label_box.add(self.my_tip_label_20)
+        my_tip_box.add(self.my_tip_label)
 
-        box.add(my_tip_label_box)
+        self.my_tip = toga.TextInput(
+            readonly=True,
+            style=Pack(flex=1, padding_left=5, text_align=RIGHT)
+        )
+        my_tip_box.add(self.my_tip)
 
-        my_tip_box = toga.Box(style=Pack())
-        self.my_tip_10 = toga.TextInput(
+        self.my_tip_total = toga.TextInput(
             readonly=True,
             style=Pack(flex=1, text_align=RIGHT)
         )
-        my_tip_box.add(self.my_tip_10)
-        self.my_tip_15 = toga.TextInput(
-            readonly=True,
-            style=Pack(flex=1, padding_left=5, text_align=RIGHT)
-        )
-        my_tip_box.add(self.my_tip_15)
-        self.my_tip_20 = toga.TextInput(
-            readonly=True,
-            style=Pack(flex=1, padding_left=5, text_align=RIGHT)
-        )
-        my_tip_box.add(self.my_tip_20)
+        my_tip_box.add(self.my_tip_total)
 
         box.add(my_tip_box)
 
