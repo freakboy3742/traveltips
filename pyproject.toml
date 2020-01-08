@@ -1,0 +1,28 @@
+[build-system]
+requires = ["briefcase"]
+
+[tool.briefcase]
+project_name = "Travel Tips"
+bundle = "com.keith-magee"
+version = "1.1.0"
+author = "Russell Keith-Magee"
+author_email = "russell@keith-magee.com"
+requires = []
+
+[tool.briefcase.app.traveltips]
+formal_name = "Travel Tips"
+description = "Calculate tips in local currency while you're travelling"
+requires = []
+sources = ['src/traveltips']
+
+[tool.briefcase.app.traveltips.macOS]
+requires = ['toga-cocoa==0.3.0.dev18']
+
+[tool.briefcase.app.traveltips.windows]
+requires = ['toga-winforms==0.3.0.dev18']
+
+[tool.briefcase.app.traveltips.linux]
+requires = ['toga-gtk==0.3.0.dev18']
+
+[tool.briefcase.app.traveltips.iOS]
+requires = ['toga-iOS==0.3.0.dev18']
