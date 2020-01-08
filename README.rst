@@ -5,8 +5,35 @@ Travel Tips
 `The BeeWare Project`_. **If you want to see more tools like Briefcase, please
 consider** `becoming a financial member of BeeWare`_.
 
-Calculate tips in local currency while you're travelling
+Calculate tips in local currency while you're travelling.
 
-.. _`Briefcase`: https://github.com/pybee/briefcase
-.. _`The BeeWare Project`: https://pybee.org/
-.. _`becoming a financial member of BeeWare`: https://pybee.org/contributing/membership
+Getting started
+---------------
+
+This app is available on the `iOS App Store
+<https://apps.apple.com/au/app/travel-tips/id1336372310>`__.
+
+To run the app locally, clone the code, create a virtual environment, and
+install Briefcase::
+
+    $ git clone https://github.com/freakboy3742/traveltips.git
+    $ cd traveltips
+    $ python -m venv venv
+    $ source venv/bin/activate
+    (venv) $ pip install --pre briefcase
+
+You can then run the app in development mode::
+
+    (venv) $ briefcase dev
+
+Or, you can run it as a desktop app::
+
+    (venv) $ briefcase run
+
+Or, you can run it as an iOS app::
+
+    (venv) $ briefcase run iOS
+
+.. _`Briefcase`: https://github.com/briefcase/briefcase
+.. _`The BeeWare Project`: https://briefcase.org/
+.. _`becoming a financial member of BeeWare`: https://briefcase.org/contributing/membership
