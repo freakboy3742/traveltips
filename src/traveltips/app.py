@@ -19,23 +19,41 @@ class Currency:
 
 
 CURRENCIES = [
-    Currency('AU Dollars', symbol='$', forex=1.26),
+    # forex is the value of USD1 in the currency
+    # Last updated Jan 8 2020
+    Currency('AU Dollars', symbol='$', forex=1.45),
     Currency('AE Dirham', symbol=None, forex=3.67),
-    Currency('BR Real', symbol='R$', forex=3.21, format='%.0f'),
-    Currency('CA Dollars', symbol='$', forex=1.25),
+    Currency('AR Peso', symbol=None, forex=59.75, format='%.0f'),
+    Currency('BR Real', symbol='R$', forex=4.07, format='%.0f'),
+    Currency('CA Dollars', symbol='$', forex=1.3),
     Currency('CH Franc', symbol='Fr.', forex=0.97),
-    Currency('CN Yuan', symbol='¥', forex=6.45, format='%.0f'),
-    Currency('Euro', symbol='€', forex=0.82),
-    Currency('GB Pounds', symbol='£', forex=0.73),
-    Currency('HK Dollars', symbol='$', forex=7.82, format='%.0f'),
-    Currency('ID Rupiah', symbol='Rp', forex=13323.50, format='%.0f'),
-    Currency('JP Yen', symbol='¥', forex=111.06, format='%.0f'),
-    Currency('MX Peso', symbol='$', forex=19.04, format='%.0f'),
-    Currency('MY Ringgit', symbol='RM', forex=3.97, format='%.0f'),
-    Currency('NZ Dollars', symbol='$', forex=1.38),
-    Currency('SG Dollars', symbol='$', forex=1.32),
-    Currency('TH Baht', symbol='฿', forex=31.88, format='%.0f'),
+    Currency('CN Yuan', symbol='¥', forex=6.95, format='%.0f'),
+    Currency('CO Peso', symbol='$', forex=3276.0, format='%.0f'),
+    Currency('DA Krone', symbol='Kr', forex=6.70, format='%.0f'),
+    Currency('ET Birr', symbol='Br', forex=32.12, format='%.0f'),
+    Currency('Euro', symbol='€', forex=0.9),
+    Currency('GB Pounds', symbol='£', forex=0.76),
+    Currency('HK Dollars', symbol='$', forex=7.78, format='%.0f'),
+    Currency('IN Rupee', symbol='₹', forex=72.02, format='%.0f'),
+    Currency('ID Rupiah', symbol='Rp', forex=13925.8, format='%.0f'),
+    Currency('IS Króna', symbol='kr', forex=123.07, format='%.0f'),
+    Currency('IL New Shekel', symbol='₪', forex=3.47, format='%.0f'),
+    Currency('JP Yen', symbol='¥', forex=108.37, format='%.0f'),
+    Currency('KR Won', symbol='₩', forex=1171.31, format='%.0f'),
+    Currency('MX Peso', symbol='$', forex=18.9, format='%.0f'),
+    Currency('MY Ringgit', symbol='RM', forex=4.11, format='%.0f'),
+    Currency('NZ Dollars', symbol='$', forex=1.5),
+    Currency('PH Peso', symbol='₱', forex=50.9, format='%.0f'),
+    Currency('PL Złoty', symbol='zł', forex=3.81, format='%.0f'),
+    Currency('RS Dinar', symbol='дин', forex=105.38, format='%.0f'),
+    Currency('RU Ruble', symbol='₽', forex=3.81, format='%.0f'),
+    Currency('SE Krona', symbol='kr', forex=9.45, format='%.0f'),
+    Currency('SG Dollars', symbol='$', forex=1.35),
+    Currency('TH Baht', symbol='฿', forex=30.27, format='%.0f'),
+    Currency('TR Lira', symbol='₺', forex=5.96, format='%.0f'),
+    Currency('TW Dollars', symbol='NT$', forex=30.06, format='%.0f'),
     Currency('US Dollars', symbol='$', forex=1.0),
+    Currency('ZA Rand', symbol='R', forex=14.32),
 ]
 
 FOREX = {
@@ -83,7 +101,10 @@ class TravelTips(toga.App):
         self.calculate()
 
     def startup(self):
-        self.main_window = toga.MainWindow(self.name, size=(320, 568))
+        self.main_window = toga.MainWindow(
+            title=self.formal_name,
+            size=(320, 568)
+        )
 
         box = toga.Box(style=Pack(direction=COLUMN, padding=5))
 
@@ -213,7 +234,7 @@ class TravelTips(toga.App):
 
 
 def main():
-    return TravelTips('Travel Tips', 'com.keith-magee.traveltips')
+    return TravelTips()
 
 
 if __name__ == '__main__':
