@@ -56,6 +56,9 @@ var/
 *.iws
 ## mpeltonen/sbt-idea plugin
 .idea_modules/
+.vscode
+
+venv
 
 # Briefcase build directories
 iOS/
@@ -64,3 +67,4 @@ windows/
 android/
 linux/
 django/
+
