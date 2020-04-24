@@ -20,7 +20,8 @@ install Briefcase::
     $ cd traveltips
     $ python -m venv venv
     $ source venv/bin/activate
-    (venv) $ pip install --pre briefcase
+    (venv) $ pip install --upgrade pip
+    (venv) $ pip install briefcase
 
 You can then run the app in development mode::
 
