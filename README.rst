@@ -35,6 +35,6 @@ Or, you can run it as an iOS app::
 
     (venv) $ briefcase run iOS
 
-.. _`Briefcase`: https://github.com/briefcase/briefcase
-.. _`The BeeWare Project`: https://briefcase.org/
-.. _`becoming a financial member of BeeWare`: https://briefcase.org/contributing/membership
+.. _`Briefcase`: https://github.com/beeware/briefcase
+.. _`The BeeWare Project`: https://beeware.org/
+.. _`becoming a financial member of BeeWare`: https://beeware.org/contributing/membership
