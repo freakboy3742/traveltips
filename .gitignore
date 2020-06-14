@@ -69,3 +69,6 @@ var/
 /linux/
 /django/
 
+# Buid artefacts and keystores
+*.jks
+*.apk
