@@ -59,13 +59,13 @@ var/
 .idea_modules/
 .vscode
 
-venv
+/venv*/
 
 # Briefcase build directories
-iOS/
-macOS/
-windows/
-android/
-linux/
-django/
+/iOS/
+/macOS/
+/windows/
+/android/
+/linux/
+/django/
 

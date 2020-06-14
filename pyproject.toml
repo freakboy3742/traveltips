@@ -8,21 +8,51 @@ version = "1.1.0"
 author = "Russell Keith-Magee"
 author_email = "russell@keith-magee.com"
 requires = []
+icon = 'src/traveltips/resources/traveltips'
+splash = 'splash/traveltips'
 
 [tool.briefcase.app.traveltips]
 formal_name = "Travel Tips"
 description = "Calculate tips in local currency while you're travelling"
-requires = []
+requires = [
+    # '../../toga/src/core'
+]
 sources = ['src/traveltips']
 
 [tool.briefcase.app.traveltips.macOS]
-requires = ['toga-cocoa==0.3.0.dev18']
+requires = [
+    # '../../toga/src/cocoa'
+    'toga-cocoa==0.3.0.dev20'
+]
 
 [tool.briefcase.app.traveltips.windows]
-requires = ['toga-winforms==0.3.0.dev18']
+requires = [
+    # '../../toga/src/winforms'
+    'toga-winforms==0.3.0.dev20'
+]
 
 [tool.briefcase.app.traveltips.linux]
-requires = ['toga-gtk==0.3.0.dev18']
+requires = [
+    # '../../toga/src/gtk'
+    'toga-gtk==0.3.0.dev20'
+]
 
 [tool.briefcase.app.traveltips.iOS]
-requires = ['toga-iOS==0.3.0.dev18']
+requires = [
+    # '../../toga/src/iOS'
+    'toga-iOS==0.3.0.dev20'
+]
+icon = 'icons/iOS/traveltips'
+splash = 'splash/iOS/traveltips'
+
+[tool.briefcase.app.traveltips.android]
+requires = [
+    # '../../toga/src/android'
+    'toga-android==0.3.0.dev20'
+]
+icon.square = 'icons/android/traveltips-square'
+icon.round = 'icons/android/traveltips-circle'
+
+splash.normal = 'splash/android/traveltips-normal'
+splash.large = 'splash/android/traveltips-large'
+splash.xlarge = 'splash/android/traveltips-xlarge'
