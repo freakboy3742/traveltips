@@ -1,0 +1,52 @@
+on: [push, pull_request]
+
+name: Create App Bundle
+
+jobs:
+  bundle:
+    name: Bundle on ${{ matrix.platform }}
+    runs-on: ${{ matrix.platform }}
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [ubuntu-16.04, macos-latest, windows-latest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install briefcase
+          python -m pip freeze
+      - name: Create and Build Bundle
+        run: |
+          briefcase create
+          briefcase build
+      - name: Package Mac
+        if: runner.os == 'macOS'
+        run: briefcase package --no-sign
+      - name: Package Windows / Linux
+        if: runner.os != 'macOS'
+        run: briefcase package
+      - name: Upload Artifact for Linux
+        uses: actions/upload-artifact@v2
+        if: runner.os == 'Linux'
+        with:
+          name: traveltips-${{ runner.os }}
+          path: '**/*.AppImage'
+      - name: Upload Artifact for MacOS
+        uses: actions/upload-artifact@v2
+        if: runner.os == 'MacOS'
+        with:
+          name: traveltips-${{ runner.os }}
+          path: '**/*.dmg'
+      - name: Upload Artifact for Windows
+        uses: actions/upload-artifact@v2
+        if: runner.os == 'Windows'
+        with:
+          name: traveltips-${{ runner.os }}
+          path: '**/*.msi'
