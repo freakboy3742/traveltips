@@ -36,17 +36,17 @@ jobs:
         uses: actions/upload-artifact@v2
         if: runner.os == 'Linux'
         with:
-          name: traveltips-${{ runner.os }}.AppImage
+          name: traveltips-${{ runner.os }}
           path: '**/*.AppImage'
       - name: Upload Artifact for MacOS
         uses: actions/upload-artifact@v2
         if: runner.os == 'MacOS'
         with:
-          name: traveltips-${{ runner.os }}.dmg
+          name: traveltips-${{ runner.os }}
           path: '**/*.dmg'
       - name: Upload Artifact for Windows
         uses: actions/upload-artifact@v2
         if: runner.os == 'Windows'
         with:
-          name: traveltips-${{ runner.os }}.msi
+          name: traveltips-${{ runner.os }}
           path: '**/*.msi'
