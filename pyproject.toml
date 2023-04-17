@@ -8,8 +8,8 @@ version = "1.1.0"
 author = "Russell Keith-Magee"
 author_email = "russell@keith-magee.com"
 requires = []
-icon = 'src/traveltips/resources/traveltips'
-splash = 'splash/traveltips'
+icon = "src/traveltips/resources/traveltips"
+splash = "splash/traveltips"
 
 [tool.briefcase.app.traveltips]
 formal_name = "Travel Tips"
@@ -22,44 +22,122 @@ sources = ['src/traveltips']
 [tool.briefcase.app.traveltips.macOS]
 requires = [
     # '../../toga/src/cocoa'
-    'toga-cocoa==0.3.0.dev20'
+    "toga-cocoa~=0.3.1",
+    "std-nslog~=1.0.0",
 ]
 
 [tool.briefcase.app.traveltips.windows]
 requires = [
     # '../../toga/src/winforms'
-    'toga-winforms==0.3.0.dev20'
+    "toga-winforms~=0.3.1",
 ]
 
 [tool.briefcase.app.traveltips.linux]
 requires = [
     # '../../toga/src/gtk'
-    'toga-gtk==0.3.0.dev20'
+    "toga-gtk~=0.3.1",
 ]
+
+[tool.briefcase.app.traveltips.linux.system.debian]
 system_requires = [
-    'libgirepository1.0-dev',
-    'libcairo2-dev',
-    'libpango1.0-dev',
-    'libwebkitgtk-3.0-0',
-    'gir1.2-webkit-3.0',
+    # Needed to compile pycairo wheel
+    "libcairo2-dev",
+    # Needed to compile PyGObject wheel
+    "libgirepository1.0-dev",
 ]
+
+system_runtime_requires = [
+    # Needed to provide GTK
+    "libgtk-3-0",
+    # Needed to provide GI bindings to GTK
+    "libgirepository-1.0-1",
+    "gir1.2-gtk-3.0",
+]
+
+[tool.briefcase.app.traveltips.linux.system.rhel]
+system_requires = [
+    # Needed to compile pycairo wheel
+    "cairo-gobject-devel",
+    # Needed to compile PyGObject wheel
+    "gobject-introspection-devel",
+]
+
+system_runtime_requires = [
+    # Needed to support Python bindings to GTK
+    "gobject-introspection",
+    # Needed to provide GTK
+    "gtk3",
+]
+
+[tool.briefcase.app.traveltips.linux.system.arch]
+system_requires = [
+    # Needed to compile pycairo wheel
+    "cairo",
+    # Needed to compile PyGObject wheel
+    "gobject-introspection",
+    # Runtime dependencies that need to exist so that the
+    # Arch package passes final validation.
+    # Needed to provide GTK
+    "gtk3",
+    # Dependencies that GTK looks for at runtime
+    "libcanberra",
+]
+
+system_runtime_requires = [
+    # Needed to provide GTK
+    "gtk3",
+    # Needed to provide PyGObject bindings
+    "gobject-introspection-runtime",
+    # Dependencies that GTK looks for at runtime
+    "libcanberra",
+]
+
+[tool.briefcase.app.traveltips.linux.appimage]
+manylinux = "manylinux2014"
+
+system_requires = [
+    # Needed to compile pycairo wheel
+    "cairo-gobject-devel",
+    # Needed to compile PyGObject wheel
+    "gobject-introspection-devel",
+    # Needed to provide GTK
+    "gtk3-devel",
+    # Dependencies that GTK looks for at runtime, that need to be
+    # in the build environment to be picked up by linuxdeploy
+    "libcanberra-gtk3",
+    "PackageKit-gtk3-module",
+    "gvfs-client",
+]
+linuxdeploy_plugins = [
+    "DEPLOY_GTK_VERSION=3 gtk",
+]
+
+[tool.briefcase.app.traveltips.linux.flatpak]
+
+flatpak_runtime = "org.gnome.Platform"
+flatpak_runtime_version = "44"
+flatpak_sdk = "org.gnome.Sdk"
 
 [tool.briefcase.app.traveltips.iOS]
 requires = [
     # '../../toga/src/iOS'
-    'toga-iOS==0.3.0.dev20'
+    "toga-iOS~=0.3.1",
+    "std-nslog~=1.0.0",
 ]
-icon = 'icons/iOS/traveltips'
-splash = 'splash/iOS/traveltips'
+icon = "icons/iOS/traveltips"
+splash = "splash/iOS/traveltips"
 
 [tool.briefcase.app.traveltips.android]
 requires = [
     # '../../toga/src/android'
-    'toga-android==0.3.0.dev20'
+    "toga-android~=0.3.1",
 ]
-icon.square = 'icons/android/traveltips-square'
-icon.round = 'icons/android/traveltips-circle'
+icon = "icons/android/traveltips"
+splash = "splash/android/traveltips"
 
-splash.normal = 'splash/android/traveltips-normal'
-splash.large = 'splash/android/traveltips-large'
-splash.xlarge = 'splash/android/traveltips-xlarge'
+[tool.briefcase.app.traveltips.web]
+
+requires = [
+    "toga-web~=0.3.1",
+]
+style_framework = "Shoelace v2.3"
