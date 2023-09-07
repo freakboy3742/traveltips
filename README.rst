@@ -11,7 +11,8 @@ Getting started
 ---------------
 
 This app is available on the `iOS App Store
-<https://apps.apple.com/au/app/travel-tips/id1336372310>`__.
+<https://apps.apple.com/au/app/travel-tips/id1336372310>`__ and `Google Play Store
+<https://play.google.com/store/apps/details?id=com.keith_magee.traveltips>`__.
 
 To run the app locally, clone the code, create a virtual environment, and
 install Briefcase::
@@ -34,6 +35,10 @@ Or, you can run it as a desktop app::
 Or, you can run it as an iOS app::
 
     (venv) $ briefcase run iOS
+
+Or, you can run it as an Android app::
+
+    (venv) $ briefcase run android
 
 .. _`Briefcase`: https://github.com/beeware/briefcase
 .. _`The BeeWare Project`: https://beeware.org/

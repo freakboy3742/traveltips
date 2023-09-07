@@ -62,13 +62,9 @@ var/
 /venv*/
 
 # Briefcase build directories
-/iOS/
-/macOS/
-/windows/
-/android/
-/linux/
-/django/
+build/
+logs/
 
 # Buid artefacts and keystores
 *.jks
-*.apk
+*.pem

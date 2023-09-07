@@ -138,7 +138,7 @@ class TravelTips(toga.App):
 
         self.amount = toga.NumberInput(
             on_change=self.on_change,
-            min_value=0,
+            min=0,
             step='0.01',
             style=Pack(
                 font_family='Helvetica',

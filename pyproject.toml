@@ -4,7 +4,7 @@ requires = ["briefcase"]
 [tool.briefcase]
 project_name = "Travel Tips"
 bundle = "com.keith-magee"
-version = "1.1.0"
+version = "1.2.0"
 author = "Russell Keith-Magee"
 author_email = "russell@keith-magee.com"
 requires = []
@@ -15,26 +15,26 @@ splash = "splash/traveltips"
 formal_name = "Travel Tips"
 description = "Calculate tips in local currency while you're travelling"
 requires = [
-    # '../../toga/src/core'
+    # "../../toga/core",
 ]
-sources = ['src/traveltips']
+sources = ["src/traveltips"]
 
 [tool.briefcase.app.traveltips.macOS]
 requires = [
-    # '../../toga/src/cocoa'
+    # "../../toga/cocoa",
     "toga-cocoa~=0.3.1",
     "std-nslog~=1.0.0",
 ]
 
 [tool.briefcase.app.traveltips.windows]
 requires = [
-    # '../../toga/src/winforms'
+    # "../../toga/winforms"
     "toga-winforms~=0.3.1",
 ]
 
 [tool.briefcase.app.traveltips.linux]
 requires = [
-    # '../../toga/src/gtk'
+    # "../../toga/gtk"
     "toga-gtk~=0.3.1",
 ]
 
@@ -120,16 +120,88 @@ flatpak_sdk = "org.gnome.Sdk"
 
 [tool.briefcase.app.traveltips.iOS]
 requires = [
-    # '../../toga/src/iOS'
+    # 1.2.0 release: using a local branch of Toga, 0.3.2.dev1135+g564927821
+    # Mainline @ 037084b11, with PRs #2025, #2029, #2075 merged in.
+    # "../../toga/iOS",
     "toga-iOS~=0.3.1",
     "std-nslog~=1.0.0",
 ]
 icon = "icons/iOS/traveltips"
 splash = "splash/iOS/traveltips"
 
+# support_package = "../../support/Python-Apple-support/dist/Python-3.11-iOS-support.custom.tar.gz"
+# template = "../../templates/briefcase-iOS-Xcode-template"
+
+cleanup_paths = [
+    "Support/python-stdlib/lib-dynload/_bisect.*.dylib",
+    "Support/python-stdlib/lib-dynload/_blake2.*.dylib",
+    "Support/python-stdlib/lib-dynload/_bz2.*.dylib",
+    "Support/python-stdlib/lib-dynload/_codecs_cn.*.dylib",
+    "Support/python-stdlib/lib-dynload/_codecs_hk.*.dylib",
+    "Support/python-stdlib/lib-dynload/_codecs_iso2022.*.dylib",
+    "Support/python-stdlib/lib-dynload/_codecs_jp.*.dylib",
+    "Support/python-stdlib/lib-dynload/_codecs_kr.*.dylib",
+    "Support/python-stdlib/lib-dynload/_codecs_tw.*.dylib",
+    # "Support/python-stdlib/lib-dynload/_contextvars.*.dylib",
+    "Support/python-stdlib/lib-dynload/_crypt.*.dylib",
+    # "Support/python-stdlib/lib-dynload/_csv.*.dylib",
+    # "Support/python-stdlib/lib-dynload/_ctypes.*.dylib",
+    "Support/python-stdlib/lib-dynload/_ctypes_test.*.dylib",
+    # "Support/python-stdlib/lib-dynload/_datetime.*.dylib",
+    "Support/python-stdlib/lib-dynload/_dbm.*.dylib",
+    # "Support/python-stdlib/lib-dynload/_decimal.*.dylib",
+    "Support/python-stdlib/lib-dynload/_elementtree.*.dylib",
+    "Support/python-stdlib/lib-dynload/_hashlib.*.dylib",
+    "Support/python-stdlib/lib-dynload/_heapq.*.dylib",
+    "Support/python-stdlib/lib-dynload/_json.*.dylib",
+    "Support/python-stdlib/lib-dynload/_lsprof.*.dylib",
+    "Support/python-stdlib/lib-dynload/_lzma.*.dylib",
+    "Support/python-stdlib/lib-dynload/_md5.*.dylib",
+    "Support/python-stdlib/lib-dynload/_multibytecodec.*.dylib",
+    "Support/python-stdlib/lib-dynload/_opcode.*.dylib",
+    "Support/python-stdlib/lib-dynload/_pickle.*.dylib",
+    "Support/python-stdlib/lib-dynload/_queue.*.dylib",
+    # "Support/python-stdlib/lib-dynload/_random.*.dylib",
+    "Support/python-stdlib/lib-dynload/_sha1.*.dylib",
+    "Support/python-stdlib/lib-dynload/_sha256.*.dylib",
+    "Support/python-stdlib/lib-dynload/_sha3.*.dylib",
+    # "Support/python-stdlib/lib-dynload/_sha512.*.dylib",
+    # "Support/python-stdlib/lib-dynload/_socket.*.dylib",
+    "Support/python-stdlib/lib-dynload/_sqlite3.*.dylib",
+    "Support/python-stdlib/lib-dynload/_ssl.*.dylib",
+    "Support/python-stdlib/lib-dynload/_statistics.*.dylib",
+    # "Support/python-stdlib/lib-dynload/_struct.*.dylib",
+    "Support/python-stdlib/lib-dynload/_testbuffer.*.dylib",
+    "Support/python-stdlib/lib-dynload/_testcapi.*.dylib",
+    "Support/python-stdlib/lib-dynload/_testclinic.*.dylib",
+    "Support/python-stdlib/lib-dynload/_testimportmultiple.*.dylib",
+    "Support/python-stdlib/lib-dynload/_testinternalcapi.*.dylib",
+    "Support/python-stdlib/lib-dynload/_testmultiphase.*.dylib",
+    "Support/python-stdlib/lib-dynload/_typing.*.dylib",
+    "Support/python-stdlib/lib-dynload/_uuid.*.dylib",
+    "Support/python-stdlib/lib-dynload/_xxtestfuzz.*.dylib",
+    "Support/python-stdlib/lib-dynload/_zoneinfo.*.dylib",
+    # "Support/python-stdlib/lib-dynload/array.*.dylib",
+    "Support/python-stdlib/lib-dynload/audioop.*.dylib",
+    # "Support/python-stdlib/lib-dynload/binascii.*.dylib",
+    # "Support/python-stdlib/lib-dynload/cmath.*.dylib",
+    # "Support/python-stdlib/lib-dynload/fcntl.*.dylib",
+    # "Support/python-stdlib/lib-dynload/math.*.dylib",
+    "Support/python-stdlib/lib-dynload/mmap.*.dylib",
+    "Support/python-stdlib/lib-dynload/pyexpat.*.dylib",
+    "Support/python-stdlib/lib-dynload/resource.*.dylib",
+    # "Support/python-stdlib/lib-dynload/select.*.dylib",
+    "Support/python-stdlib/lib-dynload/termios.*.dylib",
+    "Support/python-stdlib/lib-dynload/unicodedata.*.dylib",
+    "Support/python-stdlib/lib-dynload/xxlimited.*.dylib",
+    "Support/python-stdlib/lib-dynload/xxlimited_35.*.dylib",
+    "Support/python-stdlib/lib-dynload/zlib.*.dylib",
+]
+
 [tool.briefcase.app.traveltips.android]
 requires = [
-    # '../../toga/src/android'
+    # 1.2.0 release: using the main branch of Toga, 0.3.2.dev960+g037084b11
+    # "../../toga/android"
     "toga-android~=0.3.1",
 ]
 icon = "icons/android/traveltips"
