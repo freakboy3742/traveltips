@@ -64,6 +64,7 @@ var/
 # Briefcase build directories
 build/
 logs/
+local/
 
 # Buid artefacts and keystores
 *.jks
