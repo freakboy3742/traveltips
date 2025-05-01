@@ -81,7 +81,7 @@ class TravelTips(toga.App):
             self.my_tip.value = my.format % (my_amount * rate)
             self.my_tip_total.value = my.format % (my_amount * (rate + 1.0))
 
-        except (ValueError, TypeError) as e:
+        except (ValueError, TypeError):
             if self.amount.value:
                 value = '?'
             else:
@@ -95,9 +95,6 @@ class TravelTips(toga.App):
             self.my_tip.value = value
             self.my_tip_total.value = value
 
-    def on_select(self, widget):
-        self.calculate()
-
     def on_change(self, widget):
         self.calculate()
 
@@ -107,7 +104,7 @@ class TravelTips(toga.App):
             size=(320, 568)
         )
 
-        box = toga.Box(style=Pack(direction=COLUMN, padding=5))
+        box = toga.Box(style=Pack(direction=COLUMN, margin=5))
 
         local_box = toga.Box(
             style=Pack(
@@ -118,10 +115,9 @@ class TravelTips(toga.App):
         local_box.add(toga.Label(
             'Local Currency:',
             style=Pack(
-                width=120,
-                padding_right=5,
-                font_family='Helvetica',
-                font_size=16,
+                width=160,
+                margin_right=5,
+                font_size=14,
                 font_weight=BOLD,
                 text_align=RIGHT,
             )
@@ -129,7 +125,7 @@ class TravelTips(toga.App):
 
         self.local_currency = toga.Selection(
             items=[str(c) for c in CURRENCIES],
-            on_select=self.on_select,
+            on_change=self.on_change,
             style=Pack(flex=1)
         )
         local_box.add(self.local_currency)
@@ -141,25 +137,24 @@ class TravelTips(toga.App):
             min=0,
             step='0.01',
             style=Pack(
-                font_family='Helvetica',
                 font_size=48,
                 text_align=RIGHT
             )
         )
         box.add(self.amount)
 
-        tip_box = toga.Box(style=Pack(padding_top=10))
+        tip_box = toga.Box(style=Pack(margin_top=10))
 
         self.tip_rate = toga.Selection(
             items=["20%", "15%", "10%"],
-            on_select=self.on_select,
+            on_change=self.on_change,
             style=Pack(flex=1)
         )
         tip_box.add(self.tip_rate)
 
         self.tip = toga.TextInput(
             readonly=True,
-            style=Pack(flex=1, padding_left=5, text_align=RIGHT)
+            style=Pack(flex=1, margin_left=5, text_align=RIGHT)
         )
         tip_box.add(self.tip)
 
@@ -173,17 +168,16 @@ class TravelTips(toga.App):
 
         my_box = toga.Box(
             style=Pack(
-                padding=(10, 0, 5, 0),
-                alignment=CENTER
+                margin=(10, 0, 5, 0),
+                align_items=CENTER
             )
         )
         my_box.add(toga.Label(
             'My Currency:',
             style=Pack(
-                width=120,
-                padding_right=5,
-                font_family='Helvetica',
-                font_size=16,
+                width=160,
+                margin_right=5,
+                font_size=14,
                 font_weight=BOLD,
                 text_align=RIGHT
             )
@@ -191,7 +185,7 @@ class TravelTips(toga.App):
 
         self.my_currency = toga.Selection(
             items=[str(c) for c in CURRENCIES],
-            on_select=self.on_select,
+            on_change=self.on_change,
             style=Pack(flex=1)
         )
         my_box.add(self.my_currency)
@@ -201,24 +195,23 @@ class TravelTips(toga.App):
         self.my_amount = toga.TextInput(
             readonly=True,
             style=Pack(
-                font_family='Helvetica',
                 font_size=48,
                 text_align=RIGHT
             )
         )
         box.add(self.my_amount)
 
-        my_tip_box = toga.Box(style=Pack(padding_top=10))
+        my_tip_box = toga.Box(style=Pack(margin_top=10))
 
         self.my_tip_label = toga.Label(
             '20%',
-            style=Pack(flex=1, padding_left=5, text_align=RIGHT)
+            style=Pack(flex=1, margin_left=5, text_align=RIGHT)
         )
         my_tip_box.add(self.my_tip_label)
 
         self.my_tip = toga.TextInput(
             readonly=True,
-            style=Pack(flex=1, padding_left=5, text_align=RIGHT)
+            style=Pack(flex=1, margin_left=5, text_align=RIGHT)
         )
         my_tip_box.add(self.my_tip)
 

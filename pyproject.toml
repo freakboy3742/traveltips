@@ -21,7 +21,7 @@ sources = ["src/traveltips"]
 [tool.briefcase.app.traveltips.macOS]
 requires = [
     # "../../toga/cocoa",
-    "toga-cocoa~=0.4.5",
+    "toga-cocoa~=0.5.0",
     "std-nslog~=1.0.0",
 ]
 icon = "icons/macOS/traveltips"
@@ -29,14 +29,14 @@ icon = "icons/macOS/traveltips"
 [tool.briefcase.app.traveltips.windows]
 requires = [
     # "../../toga/winforms"
-    "toga-winforms~=0.4.5",
+    "toga-winforms~=0.5.0",
 ]
 icon = "icons/windows/traveltips"
 
 [tool.briefcase.app.traveltips.linux]
 requires = [
     # "../../toga/gtk"
-    "toga-gtk~=0.4.5",
+    "toga-gtk~=0.5.0",
 ]
 icon = "icons/linux/traveltips"
 
@@ -123,7 +123,7 @@ flatpak_sdk = "org.gnome.Sdk"
 [tool.briefcase.app.traveltips.iOS]
 requires = [
     # "../../toga/iOS",
-    "toga-iOS~=0.4.5",
+    "toga-iOS~=0.5.0",
     "std-nslog~=1.0.0",
 ]
 icon = "icons/iOS/traveltips"
@@ -200,7 +200,7 @@ cleanup_paths = [
 [tool.briefcase.app.traveltips.android]
 requires = [
     # "../../toga/android"
-    "toga-android~=0.4.5",
+    "toga-android~=0.5.0",
 ]
 build_gradle_dependencies = [
     "androidx.appcompat:appcompat:1.6.1",
@@ -212,7 +212,7 @@ icon = "icons/android/traveltips"
 [tool.briefcase.app.traveltips.web]
 
 requires = [
-    "toga-web~=0.4.5",
+    "toga-web~=0.5.0",
 ]
 style_framework = "Shoelace v2.3"
 icon = "icons/web/traveltips"
