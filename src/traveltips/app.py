@@ -109,14 +109,14 @@ class TravelTips(toga.App):
 
         local_box = toga.Box(
             style=Pack(
-                padding=(20, 0, 5, 0),
-                alignment=CENTER
+                margin=(20, 0, 5, 0),
+                align_items=CENTER
             )
         )
         local_box.add(toga.Label(
             'Local Currency:',
             style=Pack(
-                width=160,
+                flex=1,
                 margin_right=5,
                 font_size=14,
                 font_weight=BOLD,
@@ -176,7 +176,7 @@ class TravelTips(toga.App):
         my_box.add(toga.Label(
             'My Currency:',
             style=Pack(
-                width=160,
+                flex=1,
                 margin_right=5,
                 font_size=14,
                 font_weight=BOLD,
