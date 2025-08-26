@@ -4,7 +4,7 @@ requires = ["briefcase"]
 [tool.briefcase]
 project_name = "Travel Tips"
 bundle = "com.keith-magee"
-version = "1.4.0"
+version = "1.4.1"
 license.file = "LICENSE"
 author = "Russell Keith-Magee"
 author_email = "russell@keith-magee.com"
@@ -194,6 +194,8 @@ cleanup_paths = [
     "Support/**/lib-dynload/xx*.*.so*",
     "Support/**/lib-dynload/zlib.*.so*",
     "Support/**/lib/**/test",
+    "Support/**/lib/**/tkinter",
+    "Support/**/lib/**/turtledemo",
 ]
 
 [tool.briefcase.app.traveltips.android]
